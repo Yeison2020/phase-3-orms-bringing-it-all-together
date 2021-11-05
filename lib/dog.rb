@@ -1,3 +1,26 @@
 class Dog
+    attr_accessor :name, :breed, :id
+
+    def initialize(name:, breed:, id: nil)
+        @name = name
+        @breed = breed
+        @id = id
+    end
+
+    def self.create_table
+        sql = <<-SQL
+        DROP TABLE IF EXISTS dogs
+      SQL
+  
+      DB[:conn].execute(self.name,self.breed)
+    end
+    
+  def self.drop_table
+    sql = <<-SQL
+      DROP TABLE IF EXISTS dogs
+    SQL
+
+    DB[:conn].execute(self.name,self.breed) 
+  end
 
 end
